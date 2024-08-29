@@ -1,0 +1,46 @@
+openapi: 3.0.3
+
+info:
+  title: To Do lists
+  description: A simple to do list server to practice and explore ideas with 
+  version: 0.0.1
+
+servers:
+  - url: http://localhost:8080
+    description: Local server 
+
+paths:
+  /api/v1/users/{user_id}/todos:
+    get:
+      summary: Returns a list of todos for the given user.
+      responses:
+        '200':
+          description: A JSON object containing an array of todos
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/TodoList'
+
+components:
+  schemas:
+    
+    TodoList:
+      type: array
+      items: 
+        $ref : '#/components/schemas/Todo'
+
+    Todo: 
+      type: object
+      properties:
+        id:
+          type: string
+          example: 009a8573-4689-40cc-a5b2-6e5696d9c92f
+        description:
+          type: string
+          example: wash dishes
+        created:
+          type: string
+          format: date-time
+          example: 2017-07-21T17:32:28Z
+        completed:
+          type: boolean
