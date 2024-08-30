@@ -1,4 +1,4 @@
-package: inbound
+package: rest
 generate:
   chi-server: true
   strict-server: true
