@@ -13,6 +13,13 @@ paths:
   /api/v1/users/{user_id}/todos:
     get:
       summary: Returns a list of todos for the given user.
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: string
+          required: true
+          description: The user id to get the todos for
       responses:
         '200':
           description: A JSON object containing an array of todos
