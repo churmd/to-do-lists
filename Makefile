@@ -1,17 +1,21 @@
-first_time_setup:
+first_time_setup: tools
 	go mod download
+
+tools:
+	go install github.com/vektra/mockery/v2@v2.45.1
 
 generate:
 	go generate -v ./...
+	mockery
 
 format:
 	go fmt ./...
 
-clean_test_cache:
-	go clean -testcache
-
 test: clean_test_cache
 	go test ./...
+
+clean_test_cache:
+	go clean -testcache
 
 coverage:
 	go test ./... -coverprofile=coverage.out
