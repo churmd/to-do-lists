@@ -17,10 +17,10 @@ import (
 
 // Todo defines model for Todo.
 type Todo struct {
-	Completed   *bool      `json:"completed,omitempty"`
-	Created     *time.Time `json:"created,omitempty"`
-	Description *string    `json:"description,omitempty"`
-	Id          *string    `json:"id,omitempty"`
+	Completed   bool      `json:"completed"`
+	Created     time.Time `json:"created"`
+	Description string    `json:"description"`
+	Id          string    `json:"id"`
 }
 
 // TodoList defines model for TodoList.

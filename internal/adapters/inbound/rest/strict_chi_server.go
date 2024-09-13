@@ -17,8 +17,8 @@ func NewStrictChiServer(todoLister inboundports.TodoLister) StrictChiServer {
 	}
 }
 
-// Returns a list of todos for the given user.
-// (GET /api/v1/users/{user_id}/todos)
+// GetApiV1UsersUserIdTodos
+// Returns a list of todos for the given user. (GET /api/v1/users/{user_id}/todos)
 func (s StrictChiServer) GetApiV1UsersUserIdTodos(ctx context.Context, request GetApiV1UsersUserIdTodosRequestObject) (GetApiV1UsersUserIdTodosResponseObject, error) {
 	todos, err := s.TodoLister.GetTodos(ctx, models.UserID(request.UserId))
 	if err != nil {
@@ -28,10 +28,10 @@ func (s StrictChiServer) GetApiV1UsersUserIdTodos(ctx context.Context, request G
 	respTodos := make([]Todo, 0)
 	for _, todo := range todos {
 		respTodos = append(respTodos, Todo{
-			Completed:   &todo.Complete,
-			Created:     &todo.Created,
-			Description: &todo.Description,
-			Id:          &todo.ID,
+			Completed:   todo.Complete,
+			Created:     todo.Created,
+			Description: todo.Description,
+			Id:          todo.ID,
 		})
 	}
 
